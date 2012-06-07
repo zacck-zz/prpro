@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PRPro</string>
+    <string name="home_bnews">Your News</string>
+    <string name="rep_mon">Reputation</string>
+    <string name="int_tra">Overheard</string>
+    <string name="tra_sou">Followers</string>
+    <string name="m_ind">Research</string>
+    <string name="h_top">Hot Topics</string>
+
+</resources>

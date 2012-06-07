@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:background="@drawable/bckground"
+    android:layout_height="fill_parent" >
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btBnews"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableTop="@drawable/yournews"
+            android:text="@string/home_bnews" />
+
+        <Button
+            android:id="@+id/btRepMon"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/reputation"
+             android:background="@null"
+            android:text="@string/rep_mon" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btInTra"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/overheard"
+            android:background="@null"
+            android:text="@string/int_tra" />
+
+        <Button
+            android:id="@+id/btTraSour"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/followers"
+            android:background="@null"
+            android:text="@string/tra_sou" />
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:paddingBottom="20dip"
+        android:layout_weight="1" >
+
+        <Button
+            android:id="@+id/btMInd"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:background="@null"
+            android:drawableTop="@drawable/research"
+            android:text="@string/m_ind" />
+
+        <Button
+            android:id="@+id/btHtop"
+            android:layout_width="0dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/hottopics"
+            android:background="@null"
+            android:text="@string/h_top" />
+    </TableRow>
+    
+
+</TableLayout>
