@@ -28,6 +28,9 @@ public class XMLParser {
 
 	// constructor
 	public XMLParser() {
+		
+		
+		
 
 	}
 
@@ -37,6 +40,7 @@ public class XMLParser {
 	 * */
 	public String getXmlFromUrl(String url) {
 		String xml = null;
+		StringBuilder x = new StringBuilder();
 
 		try {
 			// defaultHttpClient
@@ -45,7 +49,10 @@ public class XMLParser {
 
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
-			xml = EntityUtils.toString(httpEntity);
+			// 	Log.v("doc",EntityUtils.toString(httpEntity));	
+			x.append(EntityUtils.toString(httpEntity));
+			//xml = EntityUtils.toString(httpEntity);
+			xml = x.toString();
 
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
@@ -72,6 +79,7 @@ public class XMLParser {
 			InputSource is = new InputSource();
 		        is.setCharacterStream(new StringReader(xml))	;
 		        doc = db.parse(is); 
+		        //Log.v("doc", doc.getTextContent().toString());
 
 			} catch (ParserConfigurationException e) {
 				Log.e("Error: ", e.getMessage());
@@ -96,7 +104,7 @@ public class XMLParser {
 	         if (elem.hasChildNodes()){
 	             for( child = elem.getFirstChild(); child != null; child = child.getNextSibling() ){
 	                 if( child.getNodeType() == Node.TEXT_NODE  ){
-	                     return Html.fromHtml(child.getNodeValue()).toString();
+	                     return child.getNodeValue();
 	                 }
 	             }
 	         }

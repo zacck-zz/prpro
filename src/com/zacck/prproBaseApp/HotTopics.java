@@ -23,7 +23,7 @@ import android.widget.TextView;
 public class HotTopics extends ListActivity {
 
 	// All static variables
-	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=journalist+wpp+kenyan+media&output=rss";
+	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=orange&output=rss";
 	// XML node keys
 	static final String KEY_ITEM = "item"; // parent node
 	//static final String KEY_ID = "";

@@ -28,6 +28,8 @@
         <activity android:name=".SingleMenuItemActivity"></activity>
         <activity android:name=".AndroidXMLParsingActivity"></activity>
         <activity android:name=".Categories"></activity>
+        <activity android:name=".AverageTemperatureChart"></activity>
+        <activity android:name=".HotyTopics"></activity>
     </application>
 
 </manifest>

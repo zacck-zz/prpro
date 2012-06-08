@@ -37,7 +37,7 @@ public class Categories extends TabActivity {
 		// Initialize a TabSpec for each tab and add it to the TabHost
 		spec = tabHost
 				.newTabSpec("all")
-				.setIndicator("TBWA")
+				.setIndicator("Safaricom")
 				.setContent(intent);
 		tabHost.addTab(spec);
 
@@ -46,7 +46,7 @@ public class Categories extends TabActivity {
 
 		spec = tabHost
 				.newTabSpec("SCANAD")
-				.setIndicator("SCANAD")
+				.setIndicator("Airtel")
 				.setContent(intent);
 		tabHost.addTab(spec);
 
@@ -54,7 +54,7 @@ public class Categories extends TabActivity {
 
 		spec = tabHost
 				.newTabSpec("WPP")
-				.setIndicator("WPP")
+				.setIndicator("Orange")
 				.setContent(intent);
 		tabHost.addTab(spec);
 

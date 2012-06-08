@@ -44,15 +44,15 @@
             android:drawableTop="@drawable/overheard"
             android:background="@null"
             android:text="@string/int_tra" />
-
-        <Button
-            android:id="@+id/btTraSour"
+        
+         <Button
+            android:id="@+id/btHtop"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:drawableTop="@drawable/followers"
             android:background="@null"
-            android:text="@string/tra_sou" />
+            android:drawableTop="@drawable/hottopics"
+            android:text="@string/h_top" />
     </TableRow>
 
     <TableRow
@@ -62,23 +62,8 @@
         android:paddingBottom="20dip"
         android:layout_weight="1" >
 
-        <Button
-            android:id="@+id/btMInd"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:background="@null"
-            android:drawableTop="@drawable/research"
-            android:text="@string/m_ind" />
+       
 
-        <Button
-            android:id="@+id/btHtop"
-            android:layout_width="0dp"
-            android:layout_height="fill_parent"
-            android:layout_weight="1"
-            android:drawableTop="@drawable/hottopics"
-            android:background="@null"
-            android:text="@string/h_top" />
     </TableRow>
     
 

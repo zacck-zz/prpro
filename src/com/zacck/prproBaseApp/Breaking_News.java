@@ -23,7 +23,7 @@ import android.widget.TextView;
 public class Breaking_News extends ListActivity {
 
 	// All static variables
-	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=journalist+scanad+kenyan+media&output=rss";
+	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=airtel&output=rss";
 	// XML node keys
 	static final String KEY_ITEM = "item"; // parent node
 	//static final String KEY_ID = "";
@@ -41,7 +41,9 @@ public class Breaking_News extends ListActivity {
 		XMLParser parser = new XMLParser();
 		String xml = parser.getXmlFromUrl(URL); // getting XML
 		Document doc = parser.getDomElement(xml); // getting DOM element
-		//Log.v("doc", doc.getTextContent().toString());
+	
+		
+		
 
 		NodeList nl = doc.getElementsByTagName(KEY_ITEM);
 		// looping through all item nodes <item>
@@ -49,6 +51,7 @@ public class Breaking_News extends ListActivity {
 			// creating new HashMap
 			HashMap<String, String> map = new HashMap<String, String>();
 			Element e = (Element) nl.item(i);
+			
 			
 			// adding each child node to HashMap key => value
 			//map.put(KEY_ID, parser.getValue(e, KEY_ID));
@@ -66,8 +69,8 @@ public class Breaking_News extends ListActivity {
 		// Adding menuItems to ListView
 		ListAdapter adapter = new SimpleAdapter(this, menuItems,
 				R.layout.list_item,
-				new String[] { KEY_NAME, KEY_DESC, KEY_COST }, new int[] {
-						R.id.name, R.id.desciption, R.id.cost });
+				new String[] { KEY_NAME, KEY_DESC }, new int[] {
+						R.id.name, R.id.desciption	 });
 
 		setListAdapter(adapter);
 

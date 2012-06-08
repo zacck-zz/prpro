@@ -23,7 +23,7 @@ import android.widget.TextView;
 public class AndroidXMLParsingActivity extends ListActivity {
 
 	// All static variables
-	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=+tbwa+kenyan+media&output=rss";
+	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=safaricom&output=rss";
 	// XML node keys
 	static final String KEY_ITEM = "item"; // parent node
 	//static final String KEY_ID = "";
@@ -66,8 +66,8 @@ public class AndroidXMLParsingActivity extends ListActivity {
 		// Adding menuItems to ListView
 		ListAdapter adapter = new SimpleAdapter(this, menuItems,
 				R.layout.list_item,
-				new String[] { KEY_NAME, KEY_DESC, KEY_COST }, new int[] {
-						R.id.name, R.id.desciption, R.id.cost });
+				new String[] { KEY_NAME, KEY_DESC }, new int[] {
+						R.id.name, R.id.desciption });
 
 		setListAdapter(adapter);
 

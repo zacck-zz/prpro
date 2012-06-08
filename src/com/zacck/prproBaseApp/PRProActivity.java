@@ -1,5 +1,7 @@
 package com.zacck.prproBaseApp;
 
+
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,14 +25,12 @@ public class PRProActivity extends Activity implements OnClickListener {
 		infButton = (Button) findViewById(R.id.btInTra);
 
 		infButton.setOnClickListener(this);
-		mInButton = (Button)findViewById(R.id.btMInd);
-		mInButton.setOnClickListener(this);
+		
 		btBreakiButton = (Button)findViewById(R.id.btBnews);
 		btBreakiButton.setOnClickListener(this);
 		btRepMon = (Button)findViewById(R.id.btRepMon);
 		btRepMon.setOnClickListener(this);
-		traciButton = (Button)findViewById(R.id.btTraSour);
-		traciButton.setOnClickListener(this);
+		
 		BtHot = (Button)findViewById(R.id.btHtop);
 		BtHot.setOnClickListener(this);
 		
@@ -46,24 +46,19 @@ public class PRProActivity extends Activity implements OnClickListener {
 			
 			
 			break;
-		case R.id.btMInd:
-			startActivity(new Intent(PRProActivity.this, My_Industry.class));
-			break;
-			
+		
 		case R.id.btBnews:
 			startActivity(new Intent(PRProActivity.this, Categories.class));
 			break;
 			
 		case R.id.btRepMon:
-			startActivity(new Intent(PRProActivity.this, RepMon.class));
+			startActivity(new Intent(PRProActivity.this, AverageTemperatureChart.class));
 			break;
 			
-		case R.id.btTraSour:
-			startActivity(new Intent(PRProActivity.this, Tracing.class));
-			break;
+		
 			
 		case R.id.btHtop:
-			startActivity(new Intent(PRProActivity.this, HotTopics.class));
+			startActivity(new Intent(PRProActivity.this, HotyTopics.class));
 			break;
 			
 			

@@ -13,9 +13,10 @@
             android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#dc6800"
+            android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
+            
             android:paddingTop="6dip"
             android:paddingBottom="2dip" />
 		<!-- Description label -->
@@ -23,7 +24,7 @@
             android:id="@+id/desciption"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textColor="#acacac"
+            android:textColor="@android:color/black"
             android:paddingBottom="2dip">
         </TextView>
         <!-- Linear layout for cost and price Cost: Rs.100 -->
@@ -39,7 +40,7 @@
             android:textColor="#5d5d5d"
             android:gravity="left"
             android:textStyle="bold"
-            android:text="Link: " >
+            android:text=" " >
         </TextView>
         <!-- Price Label -->
         <TextView

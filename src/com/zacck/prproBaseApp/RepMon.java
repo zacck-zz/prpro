@@ -18,6 +18,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.zacck.prproDB.SqlHandler;
+
 
 
 import android.app.ListActivity;
@@ -177,8 +179,11 @@ public class RepMon extends ListActivity {
 			ArrayList<HashMap<String, String>> commList = new ArrayList<HashMap<String, String>>();
 
 			try {
+				SqlHandler sql = new SqlHandler(RepMon.this);
+				sql.open();
 				for (int j = 0; j < commentAR.getJSONArray("items").length(); j++) {
 					HashMap<String, String> objComm = new HashMap<String, String>();
+					sql.createRepEntry(names[j], links[j], times[j],times[j]);
 					objComm.put("name", names[j]);
 					Log.v("coms", names[j]);
 					objComm.put("suggestion", commsFromDb[j]);
@@ -188,10 +193,13 @@ public class RepMon extends ListActivity {
 					commList.add(objComm);
 
 				}
-			} catch (JSONException e) {
+				sql.close();
+			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				Log.v("error", e.toString());
 			}
+		
 
 			SimpleAdapter adapter = new SimpleAdapter(RepMon.this, commList,
 					R.layout.comment_row, new String[] { "name", "suggestion",
