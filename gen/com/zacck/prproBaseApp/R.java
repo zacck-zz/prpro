@@ -12,46 +12,67 @@ public final class R {
     }
     public static final class drawable {
         public static final int bckground=0x7f020000;
-        public static final int followers=0x7f020001;
-        public static final int hottopics=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int overheard=0x7f020004;
-        public static final int prprologo=0x7f020005;
-        public static final int reputation=0x7f020006;
-        public static final int research=0x7f020007;
-        public static final int yournews=0x7f020008;
+        public static final int bckgroundp=0x7f020001;
+        public static final int followers=0x7f020002;
+        public static final int hotp=0x7f020003;
+        public static final int hottopics=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int overheard=0x7f020006;
+        public static final int overheardp=0x7f020007;
+        public static final int prprologo=0x7f020008;
+        public static final int prprop=0x7f020009;
+        public static final int reputation=0x7f02000a;
+        public static final int reputationp=0x7f02000b;
+        public static final int research=0x7f02000c;
+        public static final int yournews=0x7f02000d;
+        public static final int yournewsp=0x7f02000e;
     }
     public static final class id {
-        public static final int CommName=0x7f050001;
-        public static final int CommSentiment=0x7f050003;
-        public static final int CommText=0x7f050004;
-        public static final int CommTime=0x7f050002;
-        public static final int btBnews=0x7f05000a;
-        public static final int btHtop=0x7f05000e;
-        public static final int btInTra=0x7f05000d;
-        public static final int btRepMon=0x7f05000b;
-        public static final int cost=0x7f050007;
-        public static final int cost_label=0x7f050012;
-        public static final int desciption=0x7f050006;
-        public static final int description_label=0x7f050011;
-        public static final int linearLayout1=0x7f050000;
-        public static final int name=0x7f050005;
-        public static final int name_label=0x7f050010;
-        public static final int tableLayout1=0x7f050008;
-        public static final int tableRow1=0x7f050009;
-        public static final int tableRow2=0x7f05000c;
-        public static final int tableRow3=0x7f05000f;
-        public static final int webby=0x7f050013;
+        public static final int CommName=0x7f060001;
+        public static final int CommSentiment=0x7f060003;
+        public static final int CommText=0x7f060004;
+        public static final int CommTime=0x7f060002;
+        public static final int btBnews=0x7f06000d;
+        public static final int btHtop=0x7f060011;
+        public static final int btInTra=0x7f060010;
+        public static final int btRepMon=0x7f06000e;
+        public static final int cost=0x7f06000a;
+        public static final int cost_label=0x7f060017;
+        public static final int desciption=0x7f060009;
+        public static final int description_label=0x7f060016;
+        public static final int linearLayout1=0x7f060000;
+        public static final int name=0x7f060008;
+        public static final int name_label=0x7f060015;
+        public static final int negMens=0x7f060019;
+        public static final int posMens=0x7f06001a;
+        public static final int sentimentsn=0x7f060014;
+        public static final int sentimentsp=0x7f060013;
+        public static final int tableLayout1=0x7f06000b;
+        public static final int tableRow1=0x7f06000c;
+        public static final int tableRow2=0x7f06000f;
+        public static final int tableRow3=0x7f060012;
+        public static final int tvfSource=0x7f060005;
+        public static final int tvfTime=0x7f060006;
+        public static final int tvfTitle=0x7f060007;
+        public static final int webby=0x7f060018;
     }
     public static final class layout {
         public static final int categories=0x7f030000;
         public static final int comment_list=0x7f030001;
         public static final int comment_row=0x7f030002;
-        public static final int list=0x7f030003;
-        public static final int list_item=0x7f030004;
-        public static final int main=0x7f030005;
-        public static final int main_list=0x7f030006;
-        public static final int single_list_item=0x7f030007;
+        public static final int dla=0x7f030003;
+        public static final int fullcomm=0x7f030004;
+        public static final int iteml=0x7f030005;
+        public static final int list=0x7f030006;
+        public static final int list_item=0x7f030007;
+        public static final int m_list=0x7f030008;
+        public static final int main=0x7f030009;
+        public static final int main_list=0x7f03000a;
+        public static final int rep_list=0x7f03000b;
+        public static final int single_list_item=0x7f03000c;
+    }
+    public static final class menu {
+        public static final int mentions_menu=0x7f050000;
     }
     public static final class string {
         public static final int app_name=0x7f040000;

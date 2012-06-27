@@ -1,35 +1,87 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.zacck.prproBaseApp"
-    android:versionCode="1"
+    android:versionCode="2"
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="7" />
-    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:icon="@drawable/prprologo"
-        android:label="@string/app_name" >
+        android:icon="@drawable/prprop"
+        android:label="PRPro" >
         <activity
             android:name=".PRProActivity"
-            android:label="TBWA Fresh news served daily" >
+            android:label="PRPro"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".viewComms"></activity>
-        <activity android:name=".My_Industry"></activity>
-        <activity android:name=".Breaking_News"></activity>
-        <activity android:name=".RepMon"></activity>
-        <activity android:name=".Tracing"></activity>
-        <activity android:name=".HotTopics"></activity>
-        <activity android:name=".SingleMenuItemActivity"></activity>
-        <activity android:name=".AndroidXMLParsingActivity"></activity>
-        <activity android:name=".Categories"></activity>
-        <activity android:name=".AverageTemperatureChart"></activity>
-        <activity android:name=".HotyTopics"></activity>
+        <activity
+            android:name=".viewComms"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".My_Industry"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Breaking_News"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".RepMon"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Tracing"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".HotTopics"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".SingleMenuItemActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".AndroidXMLParsingActivity"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".Categories"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".AverageTemperatureChart"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".HotyTopics"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".users"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".keywords"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".FullComm"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        <activity
+            android:name=".ReputationMonitor"
+            android:theme="@android:style/Theme.Black.NoTitleBar" >
+        </activity>
+        
     </application>
 
 </manifest>

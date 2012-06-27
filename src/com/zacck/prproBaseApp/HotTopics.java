@@ -1,98 +1,237 @@
 package com.zacck.prproBaseApp;
-
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.InetAddress;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+
 
 import android.app.ListActivity;
+import android.app.ProgressDialog;
 import android.content.Intent;
+import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Html;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.ListAdapter;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
+import android.widget.Toast;
 
+ 
 public class HotTopics extends ListActivity {
+	
+	public String names[];
+	public String commsFromDb[];
+	public String times[];
+	public String links[];
+	InetAddress ownIP;
 
-	// All static variables
-	static final String URL = "https://news.google.co.ke/news/feeds?pz=1&cf=all&ned=en_ke&hl=en&q=orange&output=rss";
-	// XML node keys
-	static final String KEY_ITEM = "item"; // parent node
-	//static final String KEY_ID = "";
-	static final String KEY_NAME = "title";
-	static final String KEY_COST = "link";
-	static final String KEY_DESC = "pubDate";
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_list);
+		setContentView(R.layout.comment_list);
+		try {
+			ownIP =InetAddress.getLocalHost();
+		} catch (UnknownHostException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		dataGetter dg = new dataGetter();
+		dg.execute();
+		
+	
+	}
+	
+	private static String convertStreamToString(InputStream is) {
+		/*
+		 * To convert the InputStream to String we use the
+		 * BufferedReader.readLine() method. We iterate until the BufferedReader
+		 * return null which means there's no more data to read. Each line will
+		 * appended to a StringBuilder and returned as String.
+		 */
+		BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+		StringBuilder sb = new StringBuilder();
 
-		ArrayList<HashMap<String, String>> menuItems = new ArrayList<HashMap<String, String>>();
+		String line = null;
+		try {
+			while ((line = reader.readLine()) != null) {
+				sb.append(line + "\n");
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				is.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return sb.toString();
+	}
+	
+	final class dataGetter extends AsyncTask<Void, Integer, Void> {
+		
+		JSONObject commentAR;
+		ProgressDialog pd;
 
-		XMLParser parser = new XMLParser();
-		String xml = parser.getXmlFromUrl(URL); // getting XML
-		Document doc = parser.getDomElement(xml); // getting DOM element
-		//Log.v("doc", doc.getTextContent().toString());
-
-		NodeList nl = doc.getElementsByTagName(KEY_ITEM);
-		// looping through all item nodes <item>
-		for (int i = 0; i < nl.getLength(); i++) {
-			// creating new HashMap
-			HashMap<String, String> map = new HashMap<String, String>();
-			Element e = (Element) nl.item(i);
-			
-			// adding each child node to HashMap key => value
-			//map.put(KEY_ID, parser.getValue(e, KEY_ID));
-			map.put(KEY_NAME, parser.getValue(e, KEY_NAME));
-			Log.v("name", parser.getValue(e, KEY_NAME));
-			map.put(KEY_COST, parser.getValue(e, KEY_COST));
-			Log.v("link", parser.getValue(e, KEY_COST));
-			map.put(KEY_DESC, parser.getValue(e, KEY_DESC));
-			Log.v("item", Html.fromHtml(parser.getValue(e,  KEY_DESC)).toString());
-
-			// adding HashList to ArrayList
-			menuItems.add(map);
+		@Override
+		protected void onPreExecute() {
+			pd = new ProgressDialog(HotTopics.this);
+			pd.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+			pd.setMessage("Collecting Posts");
+			pd.setCancelable(true);
+			pd.show();
 		}
 
-		// Adding menuItems to ListView
-		ListAdapter adapter = new SimpleAdapter(this, menuItems,
-				R.layout.list_item,
-				new String[] { KEY_NAME, KEY_DESC, KEY_COST }, new int[] {
-						R.id.name, R.id.desciption, R.id.cost });
+		@Override
+		protected Void doInBackground(Void... arg0) {
+			// TODO Auto-generated method stub
+			// create http client to gather comments
+			try {
+				HttpClient getComment = new DefaultHttpClient();
+				HttpGet pullComm = new HttpGet();
+				pullComm.setURI(new URI(
+						"https://ajax.googleapis.com/ajax/services/search/news?v=1.0&rsz=8&h1=en&ned=en_ke&scoring=d&q=Unilever+africa"));
+				HttpResponse comments = getComment.execute(pullComm);
+				Log.v("resp", comments.toString());
+				if (comments.getStatusLine().getStatusCode() == 200) {
+					HttpEntity entit = comments.getEntity();
+					if (entit != null) {
+						InputStream commStream = entit.getContent();
+						commentAR = new JSONObject(
+								convertStreamToString(commStream));
+						Log.v("len", commentAR.length() + " ");
+						if (commentAR.length() == 0) {
 
-		setListAdapter(adapter);
+						} else {
+							names = new String[commentAR.getJSONObject("responseData").getJSONArray("results")
+									.length()];
+							commsFromDb = new String[commentAR.getJSONObject("responseData").getJSONArray("results")
+														.length()];
+							times = new String[commentAR.getJSONObject("responseData").getJSONArray("results")
+												.length()];
+							links = new String[commentAR.getJSONObject("responseData").getJSONArray("results")
+												.length()];
+							
+									
 
-		// selecting single ListView item
-		ListView lv = getListView();
+							for (int i = 0; i < commentAR.getJSONObject("responseData").getJSONArray("results")
+									.length(); i++) {
+								JSONObject OComm = commentAR.getJSONObject("responseData").getJSONArray("results").getJSONObject(i);
+								names[i] =OComm.getString("titleNoFormatting");
+								commsFromDb[i] ="Source: "+ OComm.getString("publisher");
+								times[i] = OComm.getString("publishedDate");
+								links[i] = OComm.getString("unescapedUrl");
+								Log.v("link", links[i]);
+							}
 
-		lv.setOnItemClickListener(new OnItemClickListener() {
+						}
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				// getting values from selected ListItem
-				String name = ((TextView) view.findViewById(R.id.name)).getText().toString();
-				String cost = ((TextView) view.findViewById(R.id.cost)).getText().toString();
-				String description = ((TextView) view.findViewById(R.id.desciption)).getText().toString();
-				Log.v("lot", name+cost+description);
-				
-				// Starting new intent
-				Intent in = new Intent(getApplicationContext(), SingleMenuItemActivity.class);
-				in.putExtra(KEY_NAME, name);
-				in.putExtra(KEY_COST, cost);
-				in.putExtra(KEY_DESC, description);
-				startActivity(in);
+					}
+
+				}
+
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ClientProtocolException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} finally {
 
 			}
-		});
+			return null;
+		}
+		
+		@Override
+		protected void onProgressUpdate(Integer... values) {
+
+			pd.setProgress(values[0]);
+
+		}
+
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			// super.onPostExecute(result);
+			ArrayList<HashMap<String, String>> commList = new ArrayList<HashMap<String, String>>();
+
+			try {
+				for (int j = 0; j < commentAR.getJSONObject("responseData").getJSONArray("results")
+						.length(); j++) {
+					HashMap<String, String> objComm = new HashMap<String, String>();
+					objComm.put("name", names[j]);
+					Log.v("coms", names[j]);
+					objComm.put("suggestion", commsFromDb[j]);
+					Log.v("coms", commsFromDb[j]);
+					objComm.put("time", times[j]);
+					Log.v("coms", names[j]);
+					commList.add(objComm);
+
+				}
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			SimpleAdapter adapter = new SimpleAdapter(HotTopics.this, commList,
+					R.layout.comment_row, new String[] { "name", "suggestion",
+							"time" }, new int[] { R.id.CommName, R.id.CommText,
+							R.id.CommTime });
+
+			setListAdapter(adapter);
+
+			ListView lv = getListView();
+			lv.setOnItemLongClickListener(new OnItemLongClickListener() {
+
+				@Override
+				public boolean onItemLongClick(AdapterView<?> arg0, View arg,
+						int pos, long arg3) {
+
+					Intent i = new Intent(Intent.ACTION_VIEW);
+					i.setData(Uri.parse(links[pos]));
+					startActivity(i);
+
+					return true;
+
+				}
+			});
+			
+			pd.dismiss();
+
+		}
+
 	}
+
+	
+	
+
 }

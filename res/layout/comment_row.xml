@@ -14,7 +14,8 @@
             android:id="@+id/CommName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="#dc6800"
+            android:textColor="@android:color/black"
+            android:maxLines="5"
             android:textSize="16sp"
             android:textStyle="bold"
             android:paddingTop="6dip"
@@ -27,7 +28,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Time"
-            android:textColor="#acacac" 
+            android:maxLines="5"
+            android:textColor="@android:color/black" 
             android:textStyle="bold"
             android:gravity="left"
             android:textSize="11sp" >
@@ -37,8 +39,8 @@
             android:id="@+id/CommSentiment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Time"
             android:textColor="#acacac" 
+            android:maxLines="5"
             android:textStyle="bold"
             android:gravity="left"
             android:textSize="11sp" >
@@ -50,6 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#5d5d5d"
+            android:maxLines="5"
             android:gravity="left"
             android:textStyle="bold"
             android:textSize="16sp" >

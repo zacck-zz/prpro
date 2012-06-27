@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/negMens"  android:title="Positive Mentions"> Positive Mentions</item>
+    <item android:id="@+id/posMens" android:title="Negative Mentions"> Negative Mentions</item>
+ 
+    
+
+</menu>

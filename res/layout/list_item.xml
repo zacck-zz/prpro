@@ -13,6 +13,7 @@
             android:id="@+id/name"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:maxLines="5"
             android:textColor="@android:color/black"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -23,6 +24,7 @@
         <TextView
             android:id="@+id/desciption"
             android:layout_width="fill_parent"
+            android:maxLines="5"
             android:layout_height="wrap_content"
             android:textColor="@android:color/black"
             android:paddingBottom="2dip">
@@ -39,6 +41,7 @@
             android:layout_height="wrap_content"
             android:textColor="#5d5d5d"
             android:gravity="left"
+            android:maxLines="5"
             android:textStyle="bold"
             android:text=" " >
         </TextView>
@@ -48,6 +51,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="#acacac" 
+            android:maxLines="5"
             android:textStyle="bold"
             android:gravity="left">
         </TextView>
